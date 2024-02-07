@@ -21,7 +21,7 @@ import { Route as LayoutIndexRouteImport } from './routes/_layout/index/route'
 const LoginRouteRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRoute,
-} as any)
+} as any).lazy(() => import('./routes/login/route.lazy').then((d) => d.Route))
 
 const LayoutRouteRoute = LayoutRouteImport.update({
   id: '/_layout',
