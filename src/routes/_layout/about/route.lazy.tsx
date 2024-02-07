@@ -1,16 +1,16 @@
-import { Link, createLazyFileRoute } from "@tanstack/react-router";
+import { Link, createLazyFileRoute } from "@tanstack/react-router"
 
 interface LoaderData {
-  title: string;
-  body: string;
+  title: string
+  body: string
 }
 
 export const Route = createLazyFileRoute("/_layout/about")({
-  component: () => <About />,
-});
+  component: () => <About />
+})
 
 function About() {
-  const data: LoaderData = Route.useLoaderData();
+  const data: LoaderData = Route.useLoaderData()
   return (
     <main>
       <Link to="/">Go to Index</Link>
@@ -21,5 +21,5 @@ function About() {
         Next Page
       </Link>
     </main>
-  );
+  )
 }

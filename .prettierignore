@@ -1,0 +1,12 @@
+# Ignore compiled files
+/build/
+
+# Ignore configuration files
+/.vscode/
+/.idea/
+
+# Ignore specific files
+pnpm-lock.yaml
+
+# Ignore routeTree gen file
+/src/routeTree.gen.ts
