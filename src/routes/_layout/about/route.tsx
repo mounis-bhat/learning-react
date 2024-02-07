@@ -1,5 +1,6 @@
 import { z } from "zod"
 import { createFileRoute } from "@tanstack/react-router"
+import { query } from "../../../lib/query"
 
 const validateSearch = z.object({
   page: z.number().int().nonnegative().catch(1)
@@ -7,9 +8,11 @@ const validateSearch = z.object({
 
 export const Route = createFileRoute("/_layout/about")({
   validateSearch,
-  loaderDeps: ({ search: { page } }) => ({ page }),
-  loader: async ({ deps: { page }, abortController }) =>
-    fetch("https://jsonplaceholder.typicode.com/posts/" + page, {
-      signal: abortController.signal
-    }).then(res => res.json())
+  loaderDeps: params => ({ page: params.search.page }),
+  loader: params =>
+    query({
+      endpoint: `/posts/${params.deps.page}`,
+      context: params.context.auth,
+      signal: params.abortController.signal
+    })
 })
