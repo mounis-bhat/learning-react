@@ -7,7 +7,7 @@ interface MyRouterContext {
 
 export const Route = createRootRouteWithContext<MyRouterContext>()({
   component: () => (
-    <main className="min-h-svh text-white dark:bg-neutral-800">
+    <main className="min-h-svh bg-gradient-to-l  from-sky-900 to-cyan-600 dark:from-neutral-950 dark:to-cyan-950 dark:text-white">
       <Outlet />
     </main>
   )
