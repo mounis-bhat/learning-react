@@ -1,9 +1,15 @@
 import { Link, createLazyFileRoute } from "@tanstack/react-router"
 
-interface LoaderData {
+type Note = {
+  id: number
   title: string
-  body: string
+  content: string
+  userId: number
+  updatedAt: string | null
+  createdAt: string
 }
+
+type LoaderData = Note[]
 
 export const Route = createLazyFileRoute("/_layout/about")({
   component: () => <About />
@@ -14,12 +20,12 @@ function About() {
   return (
     <main>
       <Link to="/">Go to Index</Link>
-      <p>
-        {data.title} - {data.body}
-      </p>
-      <Link from="/about" search={({ page }) => ({ page: page + 1 })}>
-        Next Page
-      </Link>
+      {data.map(note => (
+        <div key={note.id} className="my-4 rounded-md border p-4 shadow-md">
+          <h2>{note.title}</h2>
+          <p>{note.content}</p>
+        </div>
+      ))}
     </main>
   )
 }

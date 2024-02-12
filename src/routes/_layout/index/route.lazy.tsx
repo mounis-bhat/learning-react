@@ -23,6 +23,7 @@ function Index() {
       <Link to="/about" search={{ page: 1 }}>
         Go to About
       </Link>
+      <br />
       <button onClick={handleLogout}>Log Out</button>
     </main>
   )

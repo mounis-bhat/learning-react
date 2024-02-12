@@ -16,6 +16,7 @@ export function useLogin() {
 
     const request = new Request(path.toString(), {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json"
       },
